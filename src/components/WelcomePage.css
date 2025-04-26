@@ -1,0 +1,227 @@
+/* WelcomePage.css - Version avec texte en blanc */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: white;
+    /* Changé en blanc */
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a2a4a, #1c4980);
+    color: white;
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    padding: 80px 0 120px;
+    background: linear-gradient(135deg, #0066cc, #003366);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #0088ff;
+    position: relative;
+    overflow: visible;
+}
+
+/* Logo correctement positionné */
+.logo {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #1976d2, #0d47a1, #042158);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 153, 255, 0.5);
+    transition: all 0.4s ease;
+    position: absolute;
+    left: 50%;
+    bottom: -75px;
+    transform: translateX(-50%);
+    animation: logoEntrance 1.2s ease-out;
+    z-index: 10;
+}
+
+/* Effet au survol amélioré */
+.logo:hover {
+    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 153, 255, 0.7);
+}
+
+/* Texte du logo */
+.logo::before {
+    content: "E";
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: white;
+    /* Déjà en blanc */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Animation d'entrée du logo */
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+    }
+
+    40% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+h1 {
+    font-size: 3.5em;
+    margin: 0 0 20px;
+    font-weight: 800;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 10px rgba(0, 123, 255, 0.3);
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Animation douce d’entrée */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.role-selection {
+    margin: 100px auto 40px;
+    padding: 30px;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    /* Explicitement blanc */
+}
+
+.role-selection p {
+    font-size: 1.6em;
+    color: white;
+    /* Changé en blanc pur */
+    margin-bottom: 35px;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* espace augmenté entre les boutons */
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+
+
+.button {
+    width: 220px;
+    background: #1e3c72;
+    background: linear-gradient(145deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 16px 25px;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.button:hover {
+    background: linear-gradient(145deg, #2a5298, #1e3c72);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), inset 0 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.button:active {
+    transform: translateY(0px);
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+    margin-top: auto;
+    padding: 20px 0;
+    background: linear-gradient(135deg, #003366, #001a33);
+    color: white;
+    /* Changé en blanc pur */
+    text-align: center;
+    font-size: 0.95em;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajout de responsive design */
+@media (max-width: 768px) {
+    .header {
+        padding: 60px 0 100px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .logo {
+        width: 120px;
+        height: 120px;
+        bottom: -60px;
+    }
+
+    .logo::before {
+        font-size: 3.5rem;
+    }
+
+    .role-selection {
+        margin-top: 80px;
+        padding: 20px;
+    }
+
+    .button {
+        flex: 0 0 80%;
+    }
+}
+
+/* S'assurer que tous les textes sont en blanc */
+* {
+    color: white;
+}
+
+/* Pour les liens éventuels */
+a {
+    color: white;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: white;
+}
