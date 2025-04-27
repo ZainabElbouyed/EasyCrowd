@@ -5,27 +5,38 @@ import './OrganizerLogin.css';
 const OrganizerLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); // Ajouté
   const [role, setRole] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // Ajout d'un state pour contrôler la visibilité du mot de passe
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Ajouté
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logic for form submission goes here
+    if (password !== confirmPassword) {
+      alert('Les mots de passe ne correspondent pas.');
+      return;
+    }
+    // Logique de soumission du formulaire ici
   };
 
-  // Fonction pour basculer la visibilité du mot de passe
   const togglePassword = () => {
     setShowPassword(prevState => !prevState);
   };
 
+  const toggleConfirmPassword = () => {
+    setShowConfirmPassword(prevState => !prevState);
+  };
+
   return (
     <div className="container">
-      <h1>Organizer Login</h1>
+      <h1>Inscription Organisateur</h1> {/* changé pour correspondre au formulaire */}
       <form onSubmit={handleSubmit}>
         <input 
           className="input-field"
           type="email" 
-          placeholder="Email address" 
+          placeholder="Adresse e-mail" 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           required
@@ -33,26 +44,41 @@ const OrganizerLogin = () => {
         <div className="password-container">
           <input 
             className="input-field"
-            type={showPassword ? 'text' : 'password'} // Change type en fonction de showPassword
-            placeholder="Password" 
+            type={showPassword ? 'text' : 'password'} 
+            placeholder="Mot de passe" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
             required
           />
           <span onClick={togglePassword} className="toggle-password">
-            {showPassword ? '🙈' : '👁️'} {/* Affiche l'icône en fonction de showPassword */}
+            {showPassword ? '🙈' : '👁️'} 
           </span>
         </div>
-        <select value={role} onChange={(e) => setRole(e.target.value)} required>
-          <option value="">Select role</option>
-          <option value="security">Security Officer</option>
-          <option value="manager">Entrance Manager</option>
-          <option value="admin">Administrator</option>
-          <option value="agent">Field Agent</option>
-          <option value="analyst">Analyst / Observer</option>
+        <div className="password-container">
+          <input
+            className="input-field"
+            type={showConfirmPassword ? 'text' : 'password'}
+            placeholder="Confirmer le mot de passe"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          <span onClick={toggleConfirmPassword} className="toggle-password">
+            {showConfirmPassword ? '🙈' : '👁️'}
+          </span>
+        </div>
+        <select className="input-field" value={role} onChange={(e) => setRole(e.target.value)} required>
+          <option value="">Sélectionnez un rôle</option>
+          <option value="security">Agent de sécurité</option>
+          <option value="manager">Responsable des entrées</option>
+          <option value="admin">Administrateur</option>
+          <option value="agent">Agent de terrain</option>
+          <option value="analyst">Analyste / Observateur</option>
         </select>
-        <button className="submit-btn" type="submit">Login</button>
-        <p className="login-link">Forgot your password? <a href="/reset-password">Reset</a></p>
+        <button className="submit-btn" type="submit">S'inscrire</button>
+        <p className="login-link">
+          Vous avez déjà un compte ? <a href="/organizer-login">Se connecter</a> {/* changé */}
+        </p>
       </form>
     </div>
   );

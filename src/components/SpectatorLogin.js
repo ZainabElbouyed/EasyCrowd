@@ -19,9 +19,9 @@ function SpectatorLogin() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const countries = [
-    "Morocco", "France", "Germany", "Spain", "Italy",
-    "Canada", "United States", "Japan", "China", "Brazil",
-    "Australia", "India", "United Kingdom"
+    "Maroc", "France", "Allemagne", "Espagne", "Italie",
+    "Canada", "États-Unis", "Japon", "Chine", "Brésil",
+    "Australie", "Inde", "Royaume-Uni"
   ];
 
   const handleChange = (e) => {
@@ -30,37 +30,37 @@ function SpectatorLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form data submitted:", formDataSpectator);
-    // You can send data to your server here
+    console.log("Données du formulaire soumises :", formDataSpectator);
+    // Vous pouvez envoyer les données à votre serveur ici
   };
 
-  // Toggle password visibility
+  // Bascule de la visibilité du mot de passe
   const togglePassword = () => setShowPassword(!showPassword);
   const toggleConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   return (
     <div className="container">
-      <h1>Spectator Registration</h1>
+      <h1>Inscription Spectateur</h1>
       <form onSubmit={handleSubmit}>
-        <input className="input-field" type="text" name="firstName" placeholder="First Name" onChange={handleChange} required />
-        <input className="input-field" type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required />
+        <input className="input-field" type="text" name="firstName" placeholder="Prénom" onChange={handleChange} required />
+        <input className="input-field" type="text" name="lastName" placeholder="Nom" onChange={handleChange} required />
         <select className="input-field" name="country" onChange={handleChange} required>
-          <option value="">Select Country</option>
+          <option value="">Sélectionnez un pays</option>
           {countries.map((country, index) => (
             <option key={index} value={country}>{country}</option>
           ))}
         </select>
-        <input className="input-field" type="text" name="ticketNumber" placeholder="Ticket Number" onChange={handleChange} required />
-        <input className="input-field" type="text" name="seatNumber" placeholder="Seat Number" onChange={handleChange} required />
-        <input className="input-field" type="text" name="entryGate" placeholder="Entry Gate" onChange={handleChange} required />
-        <input className="input-field" type="tel" name="phoneNumber" placeholder="Phone Number" onChange={handleChange} required />
+        <input className="input-field" type="text" name="ticketNumber" placeholder="Numéro de billet" onChange={handleChange} required />
+        <input className="input-field" type="text" name="seatNumber" placeholder="Numéro de siège" onChange={handleChange} required />
+        <input className="input-field" type="text" name="entryGate" placeholder="Porte d'entrée" onChange={handleChange} required />
+        <input className="input-field" type="tel" name="phoneNumber" placeholder="Numéro de téléphone" onChange={handleChange} required />
 
-        {/* Password input with toggle visibility */}
+        {/* Champ mot de passe avec visibilité basculable */}
         <div className="password-container">
           <input
             type={showPassword ? 'text' : 'password'}
             name="password"
-            placeholder="Create Password"
+            placeholder="Créer un mot de passe"
             onChange={handleChange}
             required
           />
@@ -69,12 +69,12 @@ function SpectatorLogin() {
           </span>
         </div>
 
-        {/* Confirm Password input with toggle visibility */}
+        {/* Champ confirmation du mot de passe avec visibilité basculable */}
         <div className="password-container">
           <input
             type={showConfirmPassword ? 'text' : 'password'}
             name="confirmPassword"
-            placeholder="Confirm Password"
+            placeholder="Confirmer le mot de passe"
             onChange={handleChange}
             required
           />
@@ -83,8 +83,8 @@ function SpectatorLogin() {
           </span>
         </div>
 
-        <button className="submit-btn" type="submit">Register</button>
-        <p className="login-link">Already have an account? <a href="/spectator-login">Login</a></p>
+        <button className="submit-btn" type="submit">S'inscrire</button>
+        <p className="login-link">Vous avez déjà un compte ? <a href="/spectator-login">Se connecter</a></p>
       </form>
     </div>
   );
